@@ -1,0 +1,31 @@
+
+.gallery
+{
+    width: 1144px;
+    height: 552px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: baseline;
+}
+
+.imgGallery
+{
+    min-width: 266px;
+    min-height: 266px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+#pages
+{
+    display: flex;
+    justify-content: center;
+}
+
+.number_page
+{
+    margin-right: 10px;
+}
