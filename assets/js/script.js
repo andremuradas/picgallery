@@ -75,21 +75,53 @@ function insertImg(newList)
 
     galleryDiv.innerHTML = "";
     pagesContent.innerHTML = "";
+    let i = 0
+
+    let pageSelected = 1;
+
+    
+    let nFinal = 0;
+    let nInitial = 0;
 
     //Insere os números de páginas
+    let pages = Math.round(newList.length / 8);
     if(pages > 1)
     {
-        for(let i = 1; i <= pages; i++)
+
+        
+
+        for(i = 1; i <= pages; i++)
         {
             let numberPage = document.createElement("span");
             numberPage.classList.add('number_page');
             numberPage.innerHTML = i;
             pagesContent.append(numberPage);
         }
+
+        let numberBtn = document.querySelectorAll('.number_page');
+
+        numberBtn.forEach(number => {
+            number.addEventListener('click', () =>
+            {
+                pageSelected = number.innerHTML;
+            });
+        });
+
+        //Define o range para o looping de inserção de imagens
+        nFinal = (8 * pageSelected) - 1;
+        nInitial = nFinal - 7;
     }
+    else
+    {   
+        //Define o range para o looping de inserção de imagens
+        nFinal = newList.length - 1;
+        nInitial = 0;
+    }
+    
+
 
     //insere as imagens
-    for(let i = 0; i < newList.length; i++)
+    for(i = nInitial; i <= nFinal; i++)
     {
         let newImg = document.createElement("div");
         newImg.classList.add("imgGallery");
@@ -97,7 +129,7 @@ function insertImg(newList)
         galleryDiv.append(newImg);
     }
 
-    let pages = Math.round(newList.length / 8);
+    
 
     
 }
